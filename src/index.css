@@ -30,4 +30,9 @@
         visibility: visible;
         border: 2px solid white;
     }
+
+    .persRounded {
+        border-top-left-radius: 25px;
+        border-top-right-radius: 25px;
+    }
 }
