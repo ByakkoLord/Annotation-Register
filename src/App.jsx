@@ -41,7 +41,7 @@ function App() {
   useEffect(() => {
     function enableSubmitButton() {
       if (title && notes) {
-        setButtonSubmit("bg-orange-400")
+        setButtonSubmit("bg-orange-400 hover:bg-orange-500")
       }else{
         setButtonSubmit("bg-orange-200")
       }
@@ -59,7 +59,7 @@ function App() {
                 <input required value={title} onChange={e => setTitle(e.target.value)} type="text" placeholder="Titulo da Anotação" className="mt-10 w-10/12 focus:outline-none h-9 transition-all focus:w-11/12 focus:h-10 outline-none bg-transparent border-b-2 border-gray-400"/>
                 <textarea required value={notes} onChange={e => setNote(e.target.value)} name="" id="" cols="30" rows="10" placeholder="Anotação" className="mt-10 h-28 resize-none w-10/12 focus:outline-none transition-all focus:w-11/12 outline-none bg-transparent border-b-2 border-gray-400"></textarea>
 
-                <button id='btn_submit' type='submit' className={`text-white hover:bg-orange-500 transition-all font-bold text-2xl mt-5 w-10/12 h-12 rounded-xl ${buttonSubmit}`}>Salvar</button>
+                <button id='btn_submit' type='submit' className={`text-white  transition-all font-bold text-2xl mt-5 w-10/12 h-12 rounded-xl ${buttonSubmit}`}>Salvar</button>
                 <div className="mt-5 flex w-11/12 justify-center">
                     <ul className="flex w-10/12 justify-around">
                         <input className="cursor-pointer w-5 bg-orange-400" type="radio" name="myOption" id="AllRadio" /><label className="cursor-pointer" htmlFor="AllRadio">Todos</label>
@@ -68,7 +68,7 @@ function App() {
                     </ul>
                 </div>
         </form>
-        <main className='bg-transparent ml-5 w-8/12 rounded-2xl'>
+        <main className='bg-transparent ml-5 w-8/12 grid overflow-y-auto grid-cols-2 gap-3 rounded-2xl'>
           {allNotes.map(data => (
             <Annotations key={data._id} data={data}/>
             

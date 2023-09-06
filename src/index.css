@@ -3,6 +3,19 @@
 @tailwind utilities;
 
 @layer components {
+    ::-webkit-scrollbar{
+        background: gray;
+    }
+
+    ::-webkit-scrollbar-track{
+        background-color: #9ca3af;
+    }
+
+    ::-webkit-scrollbar-thumb{
+        background-color: #75726b;
+        border-radius: 25px;
+    }
+
     input[type='radio']:after {
         width: 15px;
         height: 15px;
