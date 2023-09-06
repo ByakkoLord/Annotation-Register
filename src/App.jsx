@@ -32,7 +32,23 @@ function App() {
       setTitle('')
       setNote('')
 
+      setAllNotes([...allNotes, response.data])
+
   }
+
+  const [buttonSubmit, setButtonSubmit] = useState("bg-orange-200")
+
+  useEffect(() => {
+    function enableSubmitButton() {
+      if (title && notes) {
+        setButtonSubmit("bg-orange-400")
+      }else{
+        setButtonSubmit("bg-orange-200")
+      }
+    }
+    enableSubmitButton()
+    
+  },[title, notes])
 
   return (
     <div id='apps' className='flex items-end justify-center bg-gray-300 w-screen h-screen'>
@@ -43,7 +59,7 @@ function App() {
                 <input required value={title} onChange={e => setTitle(e.target.value)} type="text" placeholder="Titulo da Anotação" className="mt-10 w-10/12 focus:outline-none h-9 transition-all focus:w-11/12 focus:h-10 outline-none bg-transparent border-b-2 border-gray-400"/>
                 <textarea required value={notes} onChange={e => setNote(e.target.value)} name="" id="" cols="30" rows="10" placeholder="Anotação" className="mt-10 h-28 resize-none w-10/12 focus:outline-none transition-all focus:w-11/12 outline-none bg-transparent border-b-2 border-gray-400"></textarea>
 
-                <button className="text-white hover:bg-orange-500 transition-all font-bold text-2xl mt-5 w-10/12 h-12 rounded-xl bg-orange-400">Salvar</button>
+                <button id='btn_submit' type='submit' className={`text-white hover:bg-orange-500 transition-all font-bold text-2xl mt-5 w-10/12 h-12 rounded-xl ${buttonSubmit}`}>Salvar</button>
                 <div className="mt-5 flex w-11/12 justify-center">
                     <ul className="flex w-10/12 justify-around">
                         <input className="cursor-pointer w-5 bg-orange-400" type="radio" name="myOption" id="AllRadio" /><label className="cursor-pointer" htmlFor="AllRadio">Todos</label>
